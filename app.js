@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
     var datosTabla = visitor;
     //crea la tabla html
 
-    var $html = "<table><tr><th>Id</th><th>Name</th><th>Visits</th></tr>"
+    var $html = "<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr><thead>"
       for (var i = 0; i < datosTabla.length; i++){
         $html += '<tr>';
         $html += '<td>'+datosTabla[i]._id+'</td>';
