@@ -23,25 +23,25 @@ app.get('/', (req, res) => {
     var first = new Visitor({});
     first.save(function(err) {
       if (err) return console.error(err);
+
+      //Guardando todos los datos
+          Visitor.find({}, function(err, visitor) {
+          if (err) return console.error(err);
+          var datosTabla = visitor;
+          //crea la tabla html
+
+          var $html = "<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>"
+            for (var i = 0; i < datosTabla.length; i++){
+              $html += '<tr><td>'+datosTabla[i]._id+'</td><td>'+datosTabla[i].name+'</td><td>'+datosTabla[i].count+'</td></tr>';
+            }
+            $html += "</table>";
+            res.send($html);
+          });
+      // este codigo lo repito en todos los if
+
     });
 
-//Guardando todos los datos
-    Visitor.find({}, function(err, visitor) {
-    if (err) return console.error(err);
-    var datosTabla = visitor;
-    //crea la tabla html
 
-    var $html = "<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>"
-      for (var i = 0; i < datosTabla.length; i++){
-        $html += '<tr><td>'+datosTabla[i]._id+'</td><td>'+datosTabla[i].name+'</td><td>'+datosTabla[i].count+'</td></tr>';
-      /*  $html += '<td>'+datosTabla[i]._id+'</td>';
-        $html += '<td>'+datosTabla[i].name+'</td>'
-        $html += '<td>'+datosTabla[i].count+'</td></tr>'*/
-      }
-      $html += "</table>";
-      res.send($html);
-    });
-// este codigo lo repito en todos los if
 
   }else if(req.query.name) {
 
@@ -51,7 +51,28 @@ app.get('/', (req, res) => {
           first = new Visitor({name: req.query.name});
           first.save(function(err) {
             if (err) return console.error(err);
+
+            //Guardando todos los datos
+                Visitor.find({}, function(err, visitor) {
+                if (err) return console.error(err);
+                var datosTabla = visitor;
+                //crea la tabla html
+
+                var $html = "<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>"
+                  for (var i = 0; i < datosTabla.length; i++){
+                    $html += '<tr><td>'+datosTabla[i]._id+'</td><td>'+datosTabla[i].name+'</td><td>'+datosTabla[i].count+'</td></tr>';
+                  }
+                  $html += "</table>";
+                  res.send($html);
+                });
+            // este codigo lo repito en todos los if
+
           });
+
+      }else{
+        visitor.count += 1;
+        visitor.save(function(err) {
+          if (err) return console.error(err);
 
           //Guardando todos los datos
               Visitor.find({}, function(err, visitor) {
@@ -62,37 +83,14 @@ app.get('/', (req, res) => {
               var $html = "<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>"
                 for (var i = 0; i < datosTabla.length; i++){
                   $html += '<tr><td>'+datosTabla[i]._id+'</td><td>'+datosTabla[i].name+'</td><td>'+datosTabla[i].count+'</td></tr>';
-                /*  $html += '<td>'+datosTabla[i]._id+'</td>';
-                  $html += '<td>'+datosTabla[i].name+'</td>'
-                  $html += '<td>'+datosTabla[i].count+'</td></tr>'*/
                 }
                 $html += "</table>";
                 res.send($html);
               });
           // este codigo lo repito en todos los if
-
-      }else{
-        visitor.count += 1;
-        visitor.save(function(err) {
-          if (err) return console.error(err);
+          
         });
-        //Guardando todos los datos
-            Visitor.find({}, function(err, visitor) {
-            if (err) return console.error(err);
-            var datosTabla = visitor;
-            //crea la tabla html
 
-            var $html = "<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>"
-              for (var i = 0; i < datosTabla.length; i++){
-                $html += '<tr><td>'+datosTabla[i]._id+'</td><td>'+datosTabla[i].name+'</td><td>'+datosTabla[i].count+'</td></tr>';
-              /*  $html += '<td>'+datosTabla[i]._id+'</td>';
-                $html += '<td>'+datosTabla[i].name+'</td>'
-                $html += '<td>'+datosTabla[i].count+'</td></tr>'*/
-              }
-              $html += "</table>";
-              res.send($html);
-            });
-        // este codigo lo repito en todos los if
       }
 
     //  res.send("Hola");
