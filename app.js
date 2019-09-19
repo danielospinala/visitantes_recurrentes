@@ -31,12 +31,12 @@ app.get('/', (req, res) => {
     var datosTabla = visitor;
     //crea la tabla html
 
-    var $html = ("<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>")
+    var $html = "<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>"
       for (var i = 0; i < datosTabla.length; i++){
-        $html += '<tr>';
-        $html += '<td>'+datosTabla[i]._id+'</td>';
+        $html += '<tr><td>'+datosTabla[i]._id+'</td><td>'+datosTabla[i].name+'</td><td>'+datosTabla[i].count+'</td></tr>';
+      /*  $html += '<td>'+datosTabla[i]._id+'</td>';
         $html += '<td>'+datosTabla[i].name+'</td>'
-        $html += '<td>'+datosTabla[i].count+'</td></tr>'
+        $html += '<td>'+datosTabla[i].count+'</td></tr>'*/
       }
       $html += "</table>";
       res.send($html);
@@ -59,12 +59,12 @@ app.get('/', (req, res) => {
               var datosTabla = visitor;
               //crea la tabla html
 
-              var $html = ("<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>")
+              var $html = "<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>"
                 for (var i = 0; i < datosTabla.length; i++){
-                  $html += '<tr>';
-                  $html += '<td>'+datosTabla[i]._id+'</td>';
+                  $html += '<tr><td>'+datosTabla[i]._id+'</td><td>'+datosTabla[i].name+'</td><td>'+datosTabla[i].count+'</td></tr>';
+                /*  $html += '<td>'+datosTabla[i]._id+'</td>';
                   $html += '<td>'+datosTabla[i].name+'</td>'
-                  $html += '<td>'+datosTabla[i].count+'</td></tr>'
+                  $html += '<td>'+datosTabla[i].count+'</td></tr>'*/
                 }
                 $html += "</table>";
                 res.send($html);
@@ -82,12 +82,12 @@ app.get('/', (req, res) => {
             var datosTabla = visitor;
             //crea la tabla html
 
-            var $html = ("<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>")
+            var $html = "<table><thead><tr><th>Id</th><th>Name</th><th>Visits</th></tr></thead>"
               for (var i = 0; i < datosTabla.length; i++){
-                $html += '<tr>';
-                $html += '<td>'+datosTabla[i]._id+'</td>';
+                $html += '<tr><td>'+datosTabla[i]._id+'</td><td>'+datosTabla[i].name+'</td><td>'+datosTabla[i].count+'</td></tr>';
+              /*  $html += '<td>'+datosTabla[i]._id+'</td>';
                 $html += '<td>'+datosTabla[i].name+'</td>'
-                $html += '<td>'+datosTabla[i].count+'</td></tr>'
+                $html += '<td>'+datosTabla[i].count+'</td></tr>'*/
               }
               $html += "</table>";
               res.send($html);
